@@ -28,26 +28,50 @@ var app = playground({
 
   },
 
-  mousemove: function(data) {
-    player.x = data.x;
-    player.y = data.y;
-    this.text = "mouse move " + data.x +  " , " + data.y;
+  // mousemove: function(data) {
+  //   player.x = data.x;
+  //   player.y = data.y;
+  //   this.text = "mouse move " + data.x +  " , " + data.y;
+  //
+  // },
+  //
+  // mousedown: function(data) {
+  //   player.x = data.x;
+  //   player.y = data.y;
+  //   this.text = "mouse down " + data.button + " " + data.x +  " , " + data.y;
+  //
+  // },
+  //
+  // mouseup: function(data) {
+  //   player.x = data.x;
+  //   player.y = data.y;
+  //   this.text = "mouse up " + data.button + " " + data.x +  " , " + data.y;
+  //
+  // },
 
+  movePlayer: function(event){
+    if(event.key === "down"){
+      player.y += 10;
+    }
+    if(event.key === "up"){
+      player.y -= 10;
+    }
+    if(event.key === "left"){
+      player.x -= 10;
+    }
+    if(event.key === "right"){
+      player.x += 10;
+    }
   },
 
-  mousedown: function(data) {
-    player.x = data.x;
-    player.y = data.y;
-    this.text = "mouse down " + data.button + " " + data.x +  " , " + data.y;
-
+  keydown: function(event) {
+    this.movePlayer(event);
   },
 
-  mouseup: function(data) {
-    player.x = data.x;
-    player.y = data.y;
-    this.text = "mouse up " + data.button + " " + data.x +  " , " + data.y;
-
+  keyup: function(event) {
+    this.movePlayer(event);
   },
+
 
   render: function() {
 
